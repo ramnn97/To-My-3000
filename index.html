@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="A little birthday book, written with warmth.">
+<title>A Birthday Letter</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 15%,#4c2d3b,#231923 70%);color:#402b32;font:1.125rem/1.65 Georgia,serif}
+main{width:min(100%,680px);min-height:580px;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(26px,7vw,70px);border-radius:5px 13px 13px 5px;background:linear-gradient(90deg,#e1c9bf,#fff5e9 5%,#faeadf);box-shadow:0 24px 80px #100910ad,5px 5px #bf9c97,9px 8px #805661;position:relative}
+main:before{content:"";position:absolute;inset:13px;border:1px solid #98667454;border-radius:3px 8px 8px 3px;pointer-events:none}
+.top,nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top{color:#744956;font:600 .875rem/1.4 system-ui;letter-spacing:.13em;text-transform:uppercase}
+.ornament{color:#8e4a61;font-size:1.55rem}
+article{padding:24px 0}
+h1{font-size:clamp(2.5rem,8vw,4.65rem);font-weight:400;letter-spacing:-.055em;line-height:1;margin:0 0 25px}
+h1:focus{outline:none}
+p{margin:0 0 14px;max-width:54ch}
+.photo{display:grid;place-items:center;min-height:155px;margin:0 0 24px;border:1px dashed #986674;border-radius:5px;background:#e7cfc6;color:#744956;font-style:italic}
+em{color:#80465a}
+button{font:600 .875rem system-ui;padding:12px 17px;border:1px solid #80465a;border-radius:30px;background:#80465a;color:white;cursor:pointer}
+button.secondary{color:#733e51;background:transparent}
+button:focus-visible{outline:2px solid #402b32;outline-offset:3px}
+.portrait{overflow:hidden;border:0;background:#f1ece2}
+.portrait img{display:block;width:100%;height:auto}
+#cover{position:relative}
+#cover.is-sealed img{filter:blur(18px);transform:scale(1.08)}
+#cover img{transition:filter .45s ease,transform .45s ease}
+#gift-wrap{position:absolute;inset:0;display:grid;place-items:center}
+#gift-wrap::before,#gift-wrap::after{content:"";position:absolute;background:linear-gradient(115deg,#263c58,#7798bb 32%,#466689 62%,#29425f);box-shadow:0 3px 8px #19273550;pointer-events:none}
+#gift-wrap::before{width:100%;height:10%}
+#gift-wrap::after{height:100%;width:9%}
+#reveal{z-index:1;position:relative;width:clamp(130px,37%,210px);aspect-ratio:1.15;padding:0;border:0;border-radius:0;background:none;filter:drop-shadow(1px 5px 4px #17274075)}
+.bow-loop,.bow-tail,.bow-knot{position:absolute;background:linear-gradient(140deg,#27405f,#7394b8 31%,#4e7199 49%,#2b4667 72%,#6587ac)}
+.bow-loop{top:9%;width:51%;height:49%;border-radius:18% 58% 48% 30%}
+.bow-loop.left{left:1%;transform:rotate(20deg);clip-path:polygon(0 0,58% 13%,100% 58%,91% 90%,39% 100%,0 76%)}
+.bow-loop.right{right:1%;transform:rotate(-20deg) scaleX(-1);clip-path:polygon(0 0,58% 13%,100% 58%,91% 90%,39% 100%,0 76%)}
+.bow-tail{top:40%;width:27%;height:56%;clip-path:polygon(9% 0,86% 0,100% 100%,52% 83%,0 100%)}
+.bow-tail.left{left:25%;transform:rotate(24deg)}
+.bow-tail.right{right:24%;transform:rotate(-27deg)}
+.bow-knot{left:41%;top:31%;width:18%;height:23%;border-radius:36%;transform:rotate(-9deg);box-shadow:0 2px 5px #1d324d}
+.reveal-label{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding:5px 10px;border-radius:20px;background:#263c58;color:white;white-space:nowrap}
+[hidden],#gift-wrap[hidden]{display:none}
+@media(prefers-reduced-motion:no-preference){article.turn{animation:turn .32s ease both}@keyframes turn{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}}
+main.back-cover{min-height:clamp(550px,78vw,820px);background:#dcecfa url('back-cover.jpg') center/100% 100% no-repeat;box-shadow:0 24px 80px #100910ad,5px 5px #9bb9d6,9px 8px #5d7f9f;border-radius:13px 5px 5px 13px}
+main.back-cover::before{display:none}
+.back-cover .top[hidden]{display:none}
+main.back-cover{display:grid;grid-template-rows:1fr auto 1fr}
+.back-cover article{grid-row:2;text-align:center}
+.back-cover nav{grid-row:3;align-self:end}
+.back-cover h1{color:#234d77;font-size:clamp(2.3rem,7vw,4rem);margin:0;line-height:1.15}
+.back-cover nav{justify-content:center}
+.back-cover button{background:#eef7ff;color:#234d77;border-color:#517da6}
+</style>
+<main>
+<div class="top"><span id="chapter">A Birthday Letter</span><span class="ornament" aria-hidden="true">❦</span></div>
+<article id="page">
+<figure class="photo portrait" id="portrait" hidden><img src="birthday-portrait.png" alt="Childhood portrait in a red glitter 19th birthday collage" width="1198" height="1313"></figure>
+<h1 id="title" tabindex="-1">For you, on<br>your birthday.</h1>
+<figure class="photo portrait is-sealed" id="cover"><img src="cover.png" alt="A childhood photo of two children sharing a kiss on the cheek" width="1300" height="1210"><div id="gift-wrap"><button id="reveal" type="button"><span class="bow-tail left" aria-hidden="true"></span><span class="bow-tail right" aria-hidden="true"></span><span class="bow-loop left" aria-hidden="true"></span><span class="bow-loop right" aria-hidden="true"></span><span class="bow-knot" aria-hidden="true"></span><span class="reveal-label">Tap to open</span></button></div></figure>
+<figure class="photo portrait" id="family" hidden><img src="family.jpg" alt="Family gathered together for a photograph" width="2048" height="1536"></figure>
+<div id="copy"><p>A few things I never got to say, a few things I want you to remember, and a birthday wish from someone who will always want the best for you.</p></div>
+</article>
+<nav aria-label="Pages"><button class="secondary" id="back" hidden>Previous page</button><button id="next" hidden>Open the letter</button></nav>
+<audio id="music" src="ehsaas.mp3" hidden loop preload="auto" aria-label="Background music"></audio>
+</main>
+<script>
+const pages = [
+  [
+    "A Birthday Letter",
+    "For you, on<br>your birthday.",
+    "<p>A few things I never got to say, a few things I want you to remember, and a birthday wish from someone who will always want the best for you.</p>"
+  ],
+  [
+    "Chapter One",
+    "About us.",
+    "<p>Before anything else, I want to acknowledge where I went wrong.</p><p>I made mistakes. There were things I could have handled better, moments when I should have understood you more, and times when I failed to be the person you deserved.</p><p>But you chose your self-respect.</p><p>And as one of the most important people in my life once told me, self-respect is something you should never compromise on, no matter how much you love someone.</p><p>So, I respect your decision. And somewhere, I'm proud of you for choosing yourself.</p><p>I don't want this letter to change anything between us. I just wanted to say something that deserved to be said.</p><p>Enough about us now.</p><p>From here, the good part begins.</p>"
+  ],
+  [
+    "Chapter Two",
+    "Become everything you dream of.",
+    "<p>Study smartly. Remember, your career isn't just about working hard; it's about knowing where to put your efforts. Learn, explore, ask questions, and never stop being curious.</p><p>I genuinely want to see you become successful, independent, and capable of building the life you've always imagined.</p><p>And please, take care of Dadu. Teach him that becoming the don of the area isn't the ultimate achievement in life. There is a much bigger world waiting for him. Let him dream bigger and become someone successful.</p><p>Take care of your family, too.</p><p>I know how much they've been through. Somewhere in my heart, I still consider them my people, and I never want to see them suffer anymore.</p><p>I hope you reach a point in life where you can give them everything they've ever wished for.</p><p>I'll always wish for your success, irrespective of where I stand in your life.</p>"
+  ],
+  [
+    "Chapter Three",
+    "A life that belongs to you.",
+    "<p>Live the life you've always wanted to live.</p><p>Not the life I wanted you to live. Not the life anyone else expects you to live.</p><p>I know there were times when I tried to control things that were never mine to control. You deserved the freedom to make your own choices.</p><p>You have every right to make mistakes, change your mind, explore new things, be silly, take chances, and figure out life at your own pace.</p><p>Go to places you want to visit. Wear what makes you happy. Make memories. Laugh a little louder. Do things simply because you want to.</p><p>And someday, I hope you find someone who understands you, who is patient with your imperfections, who knows how to forgive, and who makes you feel safe enough to be yourself.</p><p>Someone with whom you never have to lose yourself to keep the relationship.</p><p>It's your first time living this life, too.</p><p>You don't have to get everything right.</p>"
+  ],
+  [
+    "Chapter Four",
+    "From the people who loved you, too.",
+    "<p>You were never just a part of my life. You became a little part of ours.</p><p>Your problems were our problems. Your happiness mattered to us, and so did the little things happening in your life.</p><p>Perhaps destiny had different roads planned for us, but that doesn't take away the affection we had for you.</p><p>So, here's a little birthday wish from all of us.</p><p>Happy birthday, beta.</p><p>Stay the person you are. Never make yourself feel small or believe that you aren't important enough to be cared for.</p><p>No problem of yours is too little to deserve attention. No emotion of yours is too insignificant to deserve understanding.</p><p>You deserve care, affection, patience, and love, even on the days when you feel you haven't done anything to earn them.</p><p>You don't have to earn your worth.</p><p>You are special. Please never forget that.</p><p>We wish you a beautiful life, a happy family, a successful future, and a heart that always finds reasons to smile.</p>"
+  ],
+  [
+    "The Birthday Wish",
+    "Happy Birthday, My 3000.",
+    "<p>May life give you everything beautiful that I couldn't.</p><p>May you become everything you ever wanted to be.</p><p>And may you always find a reason to smile that beautiful smile of yours.</p><p>Take care of yourself, okay?</p><p><strong>With all the good wishes in the world,</strong></p><p>By Raman</p>"
+  ],
+  ["", "Take care of you,<br>of all of yours.", ""]
+];
+const chapter = document.getElementById('chapter');
+const title = document.getElementById('title');
+const copy = document.getElementById('copy');
+const page = document.getElementById('page');
+const portrait = document.getElementById('portrait');
+const cover = document.getElementById('cover');
+const family = document.getElementById('family');
+const back = document.getElementById('back');
+const next = document.getElementById('next');
+let current = 0;
+function show(index) {
+  current = index;
+  const [label, heading, message] = pages[index];
+  const closing = index === pages.length - 1;
+  page.closest("main").classList.toggle("back-cover", closing);
+  chapter.parentElement.hidden = closing;
+  chapter.textContent = label;
+  title.innerHTML = heading;
+  copy.innerHTML = message;
+  portrait.hidden = index !== 5;
+  cover.hidden = index !== 0;
+  family.hidden = index !== 4;
+  back.hidden = index === 0;
+  next.textContent = ['Open the letter', 'Next chapter', 'Next chapter', 'Next chapter', 'Read the birthday wish', 'Turn to the back cover', 'Back to the cover'][index];
+  page.classList.remove('turn');
+  void page.offsetWidth;
+  page.classList.add('turn');
+  title.focus({preventScroll: true});
+  window.scrollTo(0, 0);
+}
+back.addEventListener('click', () => show(current - 1));
+const music = document.getElementById('music');
+const reveal = document.getElementById('reveal');
+reveal.addEventListener('click', () => {
+  cover.classList.remove('is-sealed');
+  document.getElementById('gift-wrap').hidden = true;
+  next.hidden = false;
+  music.play().catch(() => {});
+  next.focus({preventScroll: true});
+});
+next.addEventListener('click', () => show((current + 1) % pages.length));
+</script>
+</html>
